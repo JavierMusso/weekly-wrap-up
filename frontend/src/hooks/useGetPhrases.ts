@@ -1,6 +1,8 @@
 import { useCallback, useState } from 'react';
 import { GetPhrasesParams, PaginatedResponse, Phrase } from './types';
 
+const baseUrl = 'https://weekly-app-front.onrender.com';
+
 export const useGetPhrases = () => {
   const [data, setData] = useState<PaginatedResponse<Phrase>[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -25,9 +27,9 @@ export const useGetPhrases = () => {
     ).toString();
 
     try {
-      const response = await fetch(`/phrases${query ? `?${query}` : ''}`).then(
-        (res) => res.json()
-      );
+      const response = await fetch(
+        `${baseUrl}/phrases${query ? `?${query}` : ''}`
+      ).then((res) => res.json());
 
       setData(response);
     } catch (e: any) {
