@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { GetPhrasesParams, PaginatedResponse, Phrase } from './types';
 
-const baseUrl = 'https://weekly-app-front.onrender.com';
+const baseUrl = 'https://weekly-wrap-up-1.onrender.com';
 
 export const useGetPhrases = () => {
   const [data, setData] = useState<PaginatedResponse<Phrase>[]>([]);
