@@ -1,21 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useGetPhrases } from './hooks/useGetPhrases.ts';
 
 function App() {
+  const phrases = useGetPhrases();
+
+  useEffect(() => {
+    phrases.get({ limit: 10, page: 0, search: undefined });
+  }, []);
+
   return (
-    <div className="">
-      <header className="flex min-h-[100vh] flex-col items-center justify-center bg-[#282c34] text-[29px] text-white">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="text-[#61dafb]"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex min-h-[100vh] flex-col items-center justify-center bg-[#282c34] text-[29px] text-white">
+      testing
     </div>
   );
 }
