@@ -11,10 +11,15 @@ const port = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "https://weekly-app-front.onrender.com",
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://weekly-app-front.onrender.com"
+        : "http://localhost:3001",
     credentials: true,
   })
 );
+
+app.use(express.json());
 
 app.use(routes);
 

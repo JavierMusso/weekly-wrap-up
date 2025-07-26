@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { GetPhrasesParams, PaginatedResponse, Phrase } from './types';
 
-const baseUrl = 'https://weekly-wrap-up-1.onrender.com';
+const baseUrl = process.env.REACT_APP_API_URL;
 
 export const useGetPhrases = () => {
   const [data, setData] = useState<PaginatedResponse<Phrase>[]>([]);
@@ -31,7 +31,7 @@ export const useGetPhrases = () => {
         `${baseUrl}/phrases${query ? `?${query}` : ''}`
       ).then((res) => res.json());
 
-      setData(response);
+      setData(response.data);
     } catch (e: any) {
       setError(e);
     }

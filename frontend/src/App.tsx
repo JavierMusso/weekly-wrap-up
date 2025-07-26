@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="flex min-h-[100vh] flex-col items-center justify-center bg-[#282c34] text-[29px] text-white">
-      testing
+      testing {phrases.data.length}
     </div>
   );
 }
