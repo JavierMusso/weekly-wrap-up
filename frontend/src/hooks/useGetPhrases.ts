@@ -1,11 +1,11 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { GetPhrasesParams, PaginatedResponse, Phrase } from './types';
 import config from '../config/config.ts';
 
 const baseUrl = config.apiUrl;
 
 export const useGetPhrases = () => {
-  const [data, setData] = useState<PaginatedResponse<Phrase>[]>([]);
+  const [data, setData] = useState<PaginatedResponse<Phrase>>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
@@ -32,12 +32,16 @@ export const useGetPhrases = () => {
         `${baseUrl}/phrases${query ? `?${query}` : ''}`
       ).then((res) => res.json());
 
-      setData(response.data);
+      setData(response);
     } catch (e: any) {
       setError(e);
     }
     setIsLoading(false);
   }, []);
+
+  useEffect(() => {
+    get({ limit: 10, page: 0, search: undefined });
+  }, [get]);
 
   return { data, isLoading, error, get };
 };
