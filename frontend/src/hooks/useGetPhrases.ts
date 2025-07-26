@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { GetPhrasesParams, PaginatedResponse, Phrase } from './types';
-import config from '../config/config';
+import config from '../config/config.ts';
 
 const baseUrl = config.apiUrl;
 
