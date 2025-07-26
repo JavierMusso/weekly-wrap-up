@@ -1,7 +1,8 @@
 import { useCallback, useState } from 'react';
 import { GetPhrasesParams, PaginatedResponse, Phrase } from './types';
+import config from '../config/config';
 
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = config.apiUrl;
 
 export const useGetPhrases = () => {
   const [data, setData] = useState<PaginatedResponse<Phrase>[]>([]);
