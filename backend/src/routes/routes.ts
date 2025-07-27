@@ -20,11 +20,11 @@ router.get("/phrases", async (req, res, next) => {
 
   try {
     const result = await pool.query(
-      "SELECT * FROM phrases WHERE content LIKE $1 OR author LIKE $1 OR id = $2 LIMIT $3 OFFSET $4",
+      "SELECT * FROM phrases_duplicate WHERE content LIKE $1 OR author LIKE $1 OR id = $2 LIMIT $3 OFFSET $4",
       [search, id, limit, offset]
     );
     const countResult = await pool.query(
-      "SELECT COUNT(*) FROM phrases WHERE content LIKE $1 OR author LIKE $1 OR id = $2",
+      "SELECT COUNT(*) FROM phrases_duplicate WHERE content LIKE $1 OR author LIKE $1 OR id = $2",
       [search, id]
     );
     const totalItems = parseInt(countResult.rows[0].count, 10);
