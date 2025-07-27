@@ -40,7 +40,7 @@ export const useGetPhrases = () => {
   }, []);
 
   useEffect(() => {
-    get({ limit: 10, page: 0, search: undefined });
+    get({ limit: 150, page: 0, search: undefined });
   }, [get]);
 
   return { data, isLoading, error, get };
